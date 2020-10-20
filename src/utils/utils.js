@@ -156,7 +156,10 @@ class Utils {
     }
     static dateFormat (minNum,maxNum) { 
       return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
-    }      
+    }  
+    static classNameFn (...rest) {
+        return rest.join(' ')
+    }     
 }
 
 export default Utils

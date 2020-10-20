@@ -52,3 +52,11 @@ To learn React, check out the [React documentation](https://reactjs.org/).
         "@/*":["./src/*"]
         }
     }
+## 配置全局 .scss
+
+    {
+        loader:'sass-resources-loader',
+        options: {
+            resources:paths.appSrc+'/assets/scss/base.scss'
+        }
+    }

@@ -1,0 +1,242 @@
+
+i {
+    display: inline-block;
+    font-style: normal;
+}
+
+/*
+	px 转换 rem
+*/
+$browser-default-font-size: 33.33px !default;
+
+@function pxToRem($px) {
+    //$px为需要转换的字号
+    @return $px / $browser-default-font-size * 1rem;
+}
+
+
+// 公共字体大小
+$fs-12: 12px;
+$fs-13: 13px;
+$fs-14: 14px;
+$fs-15: 15px;
+$fs-16: 16px;
+$fs-17: 17px;
+$fs-18: 18px;
+$fs-19: 19px;
+$fs-20: 20px;
+$fs-22: 22px;
+$fs-23: 23px;
+$fs-24: 24px;
+$fs-26: 26px;
+$fs-28: 28px;
+$fs-30: 30px;
+$fs-32: 32px;
+$fs-34: 34px;
+
+
+@mixin fontSize($px) {
+    font-size: $px;
+}
+
+// 公共样式传递
+@mixin postion($post: relative, $tpx: 0, $lpx: 0) { // 定位样式传递
+    position: $post;
+    top: $tpx;
+    left: $lpx;
+}
+
+@mixin flexbox($just: center, $align: center) { // 弹性盒子 默认上下左右居中
+    display: flex;
+    justify-content: $just;
+    align-items: $align;
+}
+
+@mixin flexcolumn { // 上下布局弹性盒
+    /*position: relative;*/
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@mixin angle($whpx, $borclr: $font-black, $deg: -45deg, $borWid: 1.5px) { // 尖角
+    content: "";
+    display: inline-block;
+    width: $whpx;
+    height: $whpx;
+    border: $borWid solid $borclr;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate($deg);
+}
+
+@mixin triangle($whpx, $borclr: $font-black, $deg: 0deg) { // 三角
+    content: "";
+    display: inline-block;
+    border-width: $whpx*1.2 $whpx 0 $whpx;
+    border-color: $borclr transparent transparent transparent;
+    border-style: solid;
+    transform: rotate($deg);
+}
+
+@mixin minus($wid: 2px, $hgt: 12px, $bg: $bg-but-golden) { // 减号
+    content: "";
+    display: inline-block;
+    width: $wid;
+    height: $hgt;
+    background: $bg;
+    position: relative;
+    transform: rotateZ(90deg);
+}
+
+@mixin plus($wid: 2px, $hgt: 12px, $bg: $bg-but-golden) { // 加号
+    display: inline-block;
+    width: pxToRem($wid);
+    height: pxToRem($hgt);
+    background: $bg;
+    position: relative;
+
+    &::after {
+        content: "";
+        width: $wid;
+        height: $hgt;
+        background: $bg;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: rotateZ(90deg)
+    }
+}
+
+@mixin hook($wid: 10px, $hgt: 4px, $bg: red) {
+    display: inline-block;
+    width: $wid;
+    height: $hgt;
+    background-color: $bg;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg);
+
+    &::after {
+        content: "";
+        display: block;
+        width: $wid/2*3;
+        height: $hgt;
+        background-color: $bg;
+        transform: rotate(-90deg) translate(50%, 15%);
+    }
+}
+
+@mixin scroll($bg: $bg-white2, $color: $font-black) { // 滚动条
+    background-color: $bg;
+    color: $color;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    /*position: relative;*/
+}
+
+@mixin scrolling { // 滚动条
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    /*position: relative;*/
+}
+
+@mixin lineFeed { // 强制换行
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+@mixin border($wth, $clr, $alg: '', $sty: solid) { // border 解决ios像素粗问题
+    $border: border;
+
+    @if $alg != '' {
+        $border: border-#{$alg};
+    }
+
+    #{$border}: $wth $sty $clr;
+
+    @media(-webkit-min-device-pixel-ratio: 2) {
+        #{$border}: $wth/2 $sty $clr;
+    }
+}
+
+@mixin text-ellipsis { // 文本省略号
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin text-ellip($num) { // 多行文本省略号
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
+@mixin text-wrap { // 文本自动换行
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+@mixin position-center { // 居中
+    position:absolute;
+    left:0;top:0;right:0;bottom:0;
+    margin:auto;
+}
+
+@mixin absCenter($pos: absolute) { // 定位局中
+    @include postion($pos, 50%, 50%);
+    transform: translate(-50%, -50%);
+}
+
+@mixin btnNone { //消除button的默认样式
+    margin: 0;
+    padding: 0;
+    border: 1px solid transparent; //自定义边框
+    outline: none; //消除默认点击蓝色边框效果
+}
+
+@mixin bgIcon($url, $wpx, $hpx, $level: left, $ct: center) {
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-size: $wpx $hpx;
+    background-position: $level $ct;
+}
+
+@mixin bgImg($url) {
+    background-image: $url;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@mixin btnCom($wpx, $hpx, $fsz, $clr: $font-black, $bg: transparent) {
+    box-sizing: content-box;
+    width: $wpx;
+    height: $hpx;
+    line-height: $hpx;
+    @include fontSize($fsz);
+    color: $clr;
+    text-align: center;
+    background-color: $bg;
+}
+
+@mixin avatar($wpx, $pdl, $pdt: $pdl) { // 用户头像
+    padding: $pdt $pdl;
+
+    img {
+        width: $wpx;
+        height: $wpx;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+input {
+    outline: 0;
+    background-color: transparent;
+    border:0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.fs12 {
+    @include fontSize($fs-12)
+}
+.fs13 {
+    @include fontSize($fs-13)
+}
+.fs14 {
+    @include fontSize($fs-14)
+}
+.fs15 {
+    @include fontSize($fs-15)
+}
+.fs16 {
+    @include fontSize($fs-16)
+}
+.fs17 {
+    @include fontSize($fs-17)
+}
+.fs18 {
+    @include fontSize($fs-18)
+}
+.fs19 {
+    @include fontSize($fs-19)
+}
+.fs20 {
+    @include fontSize($fs-20)
+}
+
+.w100 {
+    width: 100%;
+}
+.wh100 {
+    width: 100%;
+    height:100%;
+}
+
+.flex {
+    display: flex;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-end {
+    justify-content: end;
+}
+.flex-between {
+    justify-content: space-between;
+}
+.flex-center {
+    justify-content: center;
+}
+.tc {
+    text-align: center;
+}
+.flex-tc {
+    @include flexbox();
+}
+
+.pointer {
+    cursor: pointer;
+}
+.indent2 { 
+    text-indent:2em;
+}
+.ellipsis1 {
+    @include test-ellipsis()
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 2px;     
+    height: 2px;
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #4C494D;
+}
+.scroll-bar::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+}

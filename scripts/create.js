@@ -9,11 +9,13 @@ ${flag?"import './"+fileName+".scss'":"import 'style.scss'"}
 import { connect } from 'react-redux'
 import { mapDispatchToPropsFN } from '@/store/reducers/global.reducer'
 
-import { l } from '@/utils'
+import { Utils,l } from '@/utils'
 
 interface IProps = {
 
 }
+
+const { classNameFn } = Utils
 const ${fileName} = (props:IProps) => {
     return (
         <div className="">

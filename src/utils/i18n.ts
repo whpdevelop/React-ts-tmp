@@ -10,7 +10,7 @@ let dataObj = {
     en:enUS,
     vn:viVN
 }
-;(<any>window).l = (key:string):string =>{
+;(<any>window).l = (key:string) =>{
     let languageKey:string = store.getState().globalReducer.locale || 'cn'
     try {
         return dataObj[languageKey][key]
@@ -19,12 +19,13 @@ let dataObj = {
         return key
     }
 } 
-export default (key:string):string =>{
-    let languageKey:string = store.getState().globalReducer.locale || 'cn'
-    try {
-        return dataObj[languageKey][key]
-    } catch(e){
-        console.log(e.message)
-        return key
-    }
-} 
+
+// export default (key:string) =>{
+//     let languageKey:string = store.getState().globalReducer.locale || 'cn'
+//     try {
+//         return dataObj[languageKey][key]
+//     } catch(e){
+//         console.log(e.message)
+//         return key
+//     }
+// } 

@@ -6,6 +6,9 @@ import App from './App';
 import store from '@/store'
 import { Provider } from 'react-redux'
 
+import '@/utils/head'
+import '@/utils/i18n'
+
 ReactDOM.render(
    <Provider store={store}>
     <App />

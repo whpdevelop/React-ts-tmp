@@ -1,10 +1,6 @@
 
 import React, { useState,useEffect } from 'react'
-
-import { l } from '@/utils'
-
 interface IProps {
-
 }
 const Header = (props:IProps) => {
     return (

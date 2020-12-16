@@ -6,7 +6,6 @@ import * as TYPES  from '@/store/types'
 import { toggleLanguageAction } from '@/store/reducers/global.reducer'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { l } from '@/utils'
 
 import { ConfigProvider } from 'antd'
 // import zhCN from 'antd/es/locale/zh_CN';
@@ -33,11 +32,6 @@ function App(props:IProps) {
   }
   return (
     <div className={app.App}>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      App 
       <h1>{l('locale')}</h1>
       <h1>{l('title')}</h1>
       <Button

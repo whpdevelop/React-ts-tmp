@@ -125,14 +125,14 @@ module.exports = function(webpackEnv) {
         }
       );
     }
-    if(globalScss){
-      loaders.push({
-        loader:'sass-resources-loader',
-        options: {
-          resources:paths.appSrc+'/assets/scss/base.scss'
-        }
-      })
-    }
+    // if(globalScss){
+    //   loaders.push({
+    //     loader:'sass-resources-loader',
+    //     options: {
+    //       resources:paths.appSrc+'/assets/scss/base.scss'
+    //     }
+    //   })
+    // }
     return loaders;
   };
 
@@ -470,9 +470,9 @@ module.exports = function(webpackEnv) {
                 {
                   importLoaders: 3,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modules:{
-                    localIdentName: "[name]-[local]-[hash:5]"
-                  }
+                  // modules:{
+                  //   localIdentName: "[name]-[local]-[hash:5]"
+                  // }
                 },
                 'sass-loader',
                 true

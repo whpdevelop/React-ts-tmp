@@ -1,4 +1,5 @@
-
+import moment from 'moment'
+import React from 'react'
 class Utils {
     static isDev () {
         return window.location.href.startsWith('https')
@@ -86,7 +87,7 @@ class Utils {
      * @param {*} num  保留位数 默认 2
      * @param {*} type +-
      */
-    static toFixed2 (value,num=2,type) {
+    static toFixed2 (value,num=2,type=null) {
       if(!(value - 0)){
           return 0
       } else {
@@ -156,10 +157,67 @@ class Utils {
     }
     static dateFormat (minNum,maxNum) { 
       return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
-    }  
+    } 
     static classNameFn (...rest) {
         return rest.join(' ')
-    }     
+    }   
+    static throttle (fn, delay) {
+        // 定义上次触发时间
+        let last = 0;
+        return (...args) => {
+          const now = + Date.now();
+          if (now > last + delay) {
+            last = now;
+            fn.apply(this, args);
+          }
+        };
+      }
+      
+    /**
+     * 防抖Debounce
+     */
+    static debounce (fn, delay) {
+        let timer;
+        return (...args) => {
+            // 判断定时器是否存在，清除定时器
+            if (timer) {
+                clearTimeout(timer);
+            }
+            // 重新调用setTimeout
+            timer = setTimeout(() => {
+                fn.apply(this, args);
+            }, delay);
+        };
+    }
+    static utcToBj (value,format = 'YYYY-MM-DD HH:mm') {
+        if(value === '--') return '--'
+        if(!value) return null
+        return moment(value).add(8,'hour').format(format)
+    }
+    static timeFormat (value,format = 'HH:mm:ss') {
+        if(value === '--') return '--'
+        if(!value) return null
+        return moment(value).format(format)
+    }
+    static imgError (param) {
+        let {
+            width=27,
+            height=27,
+            url
+        } = param
+        try {
+            let  imgUrl = require(`../assets${url}`)
+            return (
+                <img
+                    width={width}
+                    height={height}
+                    src={imgUrl} 
+                alt=""/>
+            )
+        } catch (e) {
+            return ''
+        }
+    }
 }
 
 export default Utils

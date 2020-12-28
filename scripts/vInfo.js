@@ -21,6 +21,24 @@ const questionInterface = readLine.createInterface({
 
 let questionFn = ()=>{
     return new Promise((resolve,reject)=>{
+        console.log(
+`
+    # 主要type
+    feat:     增加新功能
+    fix:      修复bug
+    # 特殊type
+    docs:     只改动了文档相关的内容
+    style:    不影响代码含义的改动，例如去掉空格、改变缩进、增删分号
+    build:    构造工具的或者外部依赖的改动，例如webpack，npm
+    refactor: 代码重构时使用
+    revert:   执行git revert打印的message
+    # 暂不使用type
+    test:     添加测试或者修改现有测试
+    perf:     提高性能的改动
+    ci:       与CI（持续集成服务）有关的改动
+    chore:    不修改src或者test的其余修改，例如构建过程或辅助工具的变动
+`
+        )
         questionInterface.question(`请输入提交信息: `, answer => {
             questionInterface.close();
             if(answer.trim()) {
@@ -39,10 +57,16 @@ let main = async () => {
     } else {
         // Author:${name} <${email}>\n
         let versionStr = 
-        `${new Array(40).join('*')}\n\nDate:${moment(new Date()).format('YYYY-MM-DD HH:mm')}\nCommit:${info[1]}\nBranch:${branch}\n\n${new Array(40).join('*')}`;
+        `
+        ${new Array(40).join('*')}
+        Date:${moment(new Date()).format('YYYY-MM-DD HH:mm')}
+        Commit:${info[1]}
+        Branch:${branch}
+        ${new Array(40).join('*')}
+        `;
         console.log(moment(new Date()).format('YYYY-MM-DD HH:mm'))
         try {
-            fs.writeFileSync(path.join(process.cwd(),'/dist/version.txt'), versionStr);
+            fs.writeFileSync(path.join(process.cwd(),'/build/version.txt'), versionStr);
             // 写入版本信息之后，自动将版本信息提交到当前分支的git上
             try {
                 execSync(`git add .`);
@@ -51,7 +75,7 @@ let main = async () => {
                 console.log('git add . => 执行失败')
             }
             try {
-                execSync(`git commit -m "${info[1]}"`);
+                execSync(`git commit -m "${info[1]} ${moment(new Date()).format('YYYY-MM-DD HH:mm')}"`);
                 console.log('git commit  => 执行成功')
             } catch(e){
                 console.log('git commit  => 执行失败')

@@ -1,4 +1,5 @@
-export default {
+const data = {
     "locale":"vi-VN|vn",
-    "title":"viVN-react"
+    "title":"zhCN-react"
 }
+module.exports = data

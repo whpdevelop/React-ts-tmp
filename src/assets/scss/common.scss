@@ -21,6 +21,21 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+body,
+body button,
+body input {
+    font-family: robotoregular,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica,Arial,monospace,serif;
+    
+}
+
+.vi-VN body {
+    font-family: robotoregular,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+}
+
+.en-US button,
+.en-US input {
+    font-family: robotoregular,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,serif;
+}
 
 .fs12 {
     @include fontSize($fs-12)

@@ -1,9 +1,9 @@
 import React from 'react';
 import app from './App.scss';
 
-import { connect } from 'react-redux'
-import * as TYPES  from '@/store/types'
-import { toggleLanguageAction } from '@/store/reducers/global.reducer'
+// import { connect } from 'react-redux'
+// import * as TYPES  from '@/store/types'
+// import { toggleLanguageAction } from '@/store/reducers/global.reducer'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -13,71 +13,36 @@ import { ConfigProvider } from 'antd'
 // import viVN from 'antd/es/locale/vi_VN';
 // import zhTW from 'antd/es/locale/zh_TW';
 
-import { Button } from 'antd';
 
 import ScrollToTop from '@/Layout/ScrollToTop'
-import Main from '@/Layout/Main'
+import Pc from '@/Layout/Pc/Main'
+import Mobile from '@/Layout/Mobile/Main'
 
-interface IProps {
-  locale:string,
-  toggleLanguageAction:any
-}
-function App(props:IProps) {
-  const { 
-    locale,
-    toggleLanguageAction
-  } = props
-  let change = (locale:string) => {
-    toggleLanguageAction(locale)
-  }
+function App() {
   return (
-    <div className={app.App}>
-      <h1>{l('locale')}</h1>
-      <h1>{l('title')}</h1>
-      <Button
-      type="primary"
-      onClick = {()=>change('cn')}
-      >
-        change-cn
-      </Button>
-      <Button
-      type="primary"
-      onClick = {()=>change('tw')}
-      >
-        change-tw
-      </Button>
-      <Button
-      type="primary"
-      onClick = {()=>change('en')}
-      >
-        change-en
-      </Button>
-      <Button
-      type="primary"
-      onClick = {()=>change('vn')}
-      >
-        change-vn
-      </Button>
       <ConfigProvider>
         <Router>
           <ScrollToTop>
             <Switch>
-              <Route  component={Main} />
+            {
+                window.isPc?
+                <Route  component={Pc} />:
+                <Route  component={Mobile} />
+              }
             </Switch>
           </ScrollToTop>
         </Router>
       </ConfigProvider>
-      
-    </div>
   );
 }
-let mapStateToProps = (state:TYPES.IGlobalState) =>{
-  let { locale } = state.globalReducer
-  return {
-    locale
-  }
-}
-let mapDispatchToProps = {
-  toggleLanguageAction
-}
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+// let mapStateToProps = (state:TYPES.IGlobalState) =>{
+//   let { locale } = state.globalReducer
+//   return {
+//     locale
+//   }
+// }
+// let mapDispatchToProps = {
+//   toggleLanguageAction
+// }
+// export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default App;

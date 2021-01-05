@@ -4,24 +4,14 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 
 import Header from './Header'
 import Footer from './Footer'
+import Loading from '@/Layout/Component/Loading'
 
 
-const  Loading = ()=> {
-    return <div style={{height:'400px'}}>
-        加载中···
-        {/* <img
-         className="flex"
-         style={{margin:'200px auto'}}
-         width="80"
-         height = "80"
-         src={require('../../assets/imgs/loading.svg')} alt=""/> */}
-    </div>
-}
 const routes = [
     {
         id:1,
         path:'/index',
-        component:lazy(() => import('@/Pages/Index')),
+        component:lazy(() => import('@/Pages/Mobile/test')),
         authed:false
     }
 ]
@@ -31,7 +21,7 @@ const Main = () => {
         <div className="main">
             <Header />
                 <div style={{minHeight:'400px'}}>
-                    <Suspense fallback={Loading()}>
+                    <Suspense fallback={<Loading />}>
                         <Switch>
                             {
                                 routes.map(item=>{

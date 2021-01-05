@@ -73,5 +73,11 @@ declare module '*.scss' {
   const content: any;
   export default content;
 }
-
+declare interface Window {
+  htmlEle:any
+  isWechat:boolean
+  isIOS:boolean
+  isPc:boolean
+  devFlag:boolean
+}
 declare var l:any

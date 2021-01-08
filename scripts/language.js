@@ -4,8 +4,8 @@ const axios = require('axios')
 const {traditionalized} = require('./cn2tw')
 const zhCN  = require('../src/utils/language/zh-CN.js')
 
-const  username = 'dbay-register+download'
-const password = 'dbay-register+download'
+const  username = ''
+const password = ''
 // const url = 'http://192.168.0.126:8888'
 const url = 'http://47.52.0.186:10198'
 const lObj = {

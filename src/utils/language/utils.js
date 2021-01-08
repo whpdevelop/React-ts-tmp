@@ -14,7 +14,7 @@ for(let key in cn){
     obj.zh = cn[key]
     obj.en = en[key]
     obj.vi = vi[key]
-    obj.type = "dbay-register+download"
+    obj.type = ""
     arr.push(obj)
 }
 console.log('==========')

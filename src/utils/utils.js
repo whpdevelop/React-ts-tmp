@@ -1,5 +1,12 @@
 import moment from 'moment'
 import React from 'react'
+
+const regObj = {
+    password:/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/,
+    email:/^[a-zA-Z0-9]+([-_.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([-_.][a-zA-Z0-9]+)*\.[a-z]{2,}$/,
+    mobile:/^[0-9]{4,11}$/
+}
+
 class Utils {
     static isDev () {
         return window.location.href.startsWith('https')
@@ -216,6 +223,22 @@ class Utils {
             )
         } catch (e) {
             return ''
+        }
+    }
+    static enter (param = '',space=false) {
+        let str = typeof param === 'string' ? param : (param).toString()
+        if(space)
+            return str.replace(/(\r)?\n/g, '<br />').replace(/\s{2}/g,"&emsp;")
+        else
+            return str.replace(/(\r)?\n/g, '<br />')
+    }
+    static checkout(key,value){
+        try{
+            if(!regObj[key]) return value.trim().length>0
+            return regObj[key].test(value)
+        } catch (e){
+            console.log(e)
+            return false
         }
     }
 }

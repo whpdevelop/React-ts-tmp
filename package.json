@@ -80,6 +80,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js  && node scripts/vInfo.js",
     "create": "node scripts/create.js",
+    "lang": "node scripts/language.js",
     "tiny": "node scripts/tinyPng.js",
     "test": "node scripts/test.js"
   },

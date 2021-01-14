@@ -17,6 +17,11 @@ for(let key in cn){
     obj.type = ""
     arr.push(obj)
 }
-console.log('==========')
-fs.writeFileSync('./data.js',JSON.stringify(arr,null,4),'utf-8')
-console.log('==========')
+
+let main = () =>  {
+    if(!obj.type) return console.log(`obj.type = "不能为空"`)
+    console.log('==========')
+    fs.writeFileSync('./data.js',JSON.stringify(arr,null,4),'utf-8')
+    console.log('==========')
+}
+main()

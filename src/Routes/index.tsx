@@ -9,7 +9,7 @@ export interface IRoutes {
 export const routes:IRoutes[] = [
     {
         path:'/index',
-        component:lazy(() => import('@/Pages/Pc/test'))
+        component:lazy(() => import('@/Pages/Index'))
     }
 ]
 export const RouteWithSubRoutes = (route:IRoutes) => {

@@ -3,7 +3,6 @@ import React , { Suspense} from 'react';
 import { Switch,Redirect } from 'react-router-dom'
 import Loading from '@/Layout/Component/Loading'
 import {RouteWithSubRoutes,routes} from '@/Routes'
-
 const Main = () => {
     return (
         <>

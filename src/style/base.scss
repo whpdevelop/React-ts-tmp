@@ -4,15 +4,12 @@ i {
     font-style: normal;
 }
 
-/*
-	px 转换 rem
-*/
-$browser-default-font-size: 33.33px !default;
+// 公共字体
+$ff-zh:robotoregular,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica,Arial,monospace,serif;
 
-@function pxToRem($px) {
-    //$px为需要转换的字号
-    @return $px / $browser-default-font-size * 1rem;
-}
+$ff-vi:robotoregular,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+
+$ff-en:robotoregular,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,serif;
 
 
 // 公共字体大小
@@ -25,15 +22,19 @@ $fs-17: 17px;
 $fs-18: 18px;
 $fs-19: 19px;
 $fs-20: 20px;
+$fs-21: 21px;
 $fs-22: 22px;
 $fs-23: 23px;
 $fs-24: 24px;
+$fs-25: 25px;
 $fs-26: 26px;
+$fs-27: 27px;
 $fs-28: 28px;
+$fs-29: 29px;
 $fs-30: 30px;
 $fs-32: 32px;
 $fs-34: 34px;
-
+$fs-48: 48px;
 
 @mixin fontSize($px) {
     font-size: $px;

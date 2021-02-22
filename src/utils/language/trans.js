@@ -40,7 +40,7 @@ let reqFn = async () => {
     }).then(
       (data) => {
         console.log(data);
-        dataVn[key] = data.TargetText
+        dataVn[key] = dataVn[key] || data.TargetText
       },
       (err) => {
         console.error("error", err);
@@ -54,7 +54,7 @@ let reqFn = async () => {
     }).then(
       (data) => {
         console.log(data);
-        dataEn[key] = data.TargetText
+        dataEn[key] = dataEn[key]||data.TargetText
       },
       (err) => {
         console.error("error", err);
@@ -62,12 +62,16 @@ let reqFn = async () => {
     );
     setTimeout(reqFn,300)
 }
-
+let timer
 let writeFn = () => {
     let cnL = Object.keys(cn).length
     let enL = Object.keys(dataEn).length
     let vnL = Object.keys(dataVn).length
+    console.log('cnL',cnL)
+    console.log('enL',enL)
+    console.log('vnL',vnL)
     if(cnL === enL && cnL === vnL){
+
     let dbEn = 
 `
 const data = ${JSON.stringify(dataEn,null,4)}
@@ -82,9 +86,10 @@ module.exports = data
 `
      fs.writeFileSync(fileUrlFn('vi-VN'),dbVn,'utf-8')
      console.log('越南翻译成功')
+     timer&&clearTimeout(timer)
      return
     }
-    setTimeout(writeFn,1000)
+    timer = setTimeout(writeFn,1000)
 }
 if(cnKey.length>0){
   reqFn()

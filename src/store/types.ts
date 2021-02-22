@@ -9,8 +9,7 @@ export interface IAction {
  */
 
 export interface IGlobalReducer {
-    locale:string,
-    testData:any
+    locale:string
 }
 
 export interface IGlobalState {

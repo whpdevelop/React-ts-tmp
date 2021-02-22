@@ -1,8 +1,11 @@
 @import "./base.scss";
-
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+img {
+    display: flex;
 }
 li {
     list-style: none;
@@ -24,19 +27,21 @@ input[type=number]::-webkit-outer-spin-button {
 body,
 body button,
 body input {
-    font-family: robotoregular,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,Helvetica,Arial,monospace,serif;
-    
+    font-family: $ff-zh;
 }
-
 .vi-VN body {
-    font-family: robotoregular,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+    font-family: $ff-vi;
 }
-
 .en-US button,
 .en-US input {
-    font-family: robotoregular,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft YaHei,WenQuanYi Micro Hei,serif;
+    font-family: $ff-en;
 }
-
+body {
+    font-size: 14px;
+}
+html {
+    line-height: 1.5!important;
+}
 .fs12 {
     @include fontSize($fs-12)
 }
@@ -64,9 +69,32 @@ body input {
 .fs20 {
     @include fontSize($fs-20)
 }
-
+.fs22 {
+    @include fontSize($fs-22)
+}
+.fs24 {
+    @include fontSize($fs-24)
+}
+.fs48 {
+    @include fontSize($fs-48)
+}
+.color-fff {
+    color:#fff;
+}
+.color-333 {
+    color:#333333;
+}
+.m00 {
+    margin: 0 auto;
+}
+.fw500 {
+    font-weight: 500;
+}
 .w100 {
     width: 100%;
+}
+.h100 {
+    height: 100%;
 }
 .wh100 {
     width: 100%;
@@ -94,6 +122,12 @@ body input {
 .flex-center {
     justify-content: center;
 }
+.align-content-center {
+    align-content:center;
+}
+.align-items-center {
+    align-items:center;
+}
 .tc {
     text-align: center;
 }
@@ -107,9 +141,9 @@ body input {
 .indent2 { 
     text-indent:2em;
 }
-// .ellipsis1 {
-//     @include test-ellipsis()
-// }
+.ellipsis1 {
+    @include text-ellipsis();
+}
 
 .scroll-bar::-webkit-scrollbar {
     width: 2px;     

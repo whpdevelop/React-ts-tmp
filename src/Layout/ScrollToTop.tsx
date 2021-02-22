@@ -1,4 +1,4 @@
-import React, { useEffect, ReactElement} from 'react';
+import { useEffect, ReactElement} from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 interface IProps extends RouteComponentProps {
